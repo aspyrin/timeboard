@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ user.name }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ user.name }}</h1>
+    <div class="alert alert-info">
+        <p>{{ user.nick }}</p>
+        <p>{{ user.tg }}</p>
+        <p>{{ user.email }}</p>
+        <p>{{ user.phone }}</p>
+        <p>{{ user.pw }}</p>
+        <a href="/users/{{ user.id }}/delete" class="btn btn-danger">Удалить</a>
+        <a href="/users/{{ user.id }}/update" class="btn btn-success">Изменить</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Группы пользователей
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Группы пользователей</h1>
+    {% if usergroups|length > 0 %}
+        {% for usergroup in usergroups %}
+        <div class="alert alert-info">
+            <h2>{{ usergroup.name }}</h2>
+            <a href="/usergroups/{{ usergroup.id }}" class="btn btn-warning">Детальнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>В базе нет ни одной группы пользователей</p>
+    {% endif %}
+</div>
+
+{% endblock %}

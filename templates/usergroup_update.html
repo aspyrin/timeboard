@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Изменение данных группы пользователей
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Изменение данных пользователя</h1>
+    <form method="post">
+        <label for="name">Название группы:</label><br>
+        <input type="text" name="name" id="name" class="form-control" value="{{usergroup.name}}" placeholder='Название группы'><br>
+        <input type="submit" class="btn btn-success" value="Обновить"><br>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Обновление категории
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Обновление категории</h1>
+    <form method="post">
+        <label for="title">Название категории:</label><br>
+        <input type="text" name="title" id="title" class="form-control" value="{{task_category.title}}" placeholder="Заголовок задачи" required><br>
+
+        <label for="desc">Описание:</label><br>
+        <textarea name="desc" id="desc" class="form-control" placeholder="Описание">{{task_category.desc}}</textarea><br>
+
+        <input type="submit" class="btn btn-success" value="Обновить"><br>
+    </form>
+</div>
+{% endblock %}

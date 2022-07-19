@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Новая задачи
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавление новой задачи</h1>
+    <form method="post">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Заголовок задачи" required><br>
+        <input type="number" name="category_id" id="category_id" class="form-control" placeholder="Категория" required><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Описание"></textarea><br>
+        <input type="number" name="parent_task_id" id="parent_task_id" class="form-control" placeholder="Суперзадача"><br>
+        <input type="number" name="target_user_id" id="target_user_id" class="form-control" placeholder="Пользователи" required><br>
+        <label for="start_date">Начало:</label><br>
+        <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Начало" required><br>
+        <label for="end_date">Окончание:</label><br>
+        <input type="datetime-local" name="end_date" id="end_date" class="form-control" placeholder="Окончание"><br>
+        <label for="remind_date">Напомнить:</label><br>
+        <input type="datetime-local" name="remind_date" id="remind_date" class="form-control" placeholder="Напомнить"><br>
+
+        <input type="submit" class="btn btn-success" value="Сохранить"><br>
+    </form>
+</div>
+{% endblock %}

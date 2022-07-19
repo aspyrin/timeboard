@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Изменение данных пользователя
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Изменение данных пользователя</h1>
+    <form method="post">
+        <label for="name">Имя пользователя:</label><br>
+        <input type="text" name="name" id="name" class="form-control" value="{{user.name}}" placeholder='Имя пользователя'><br>
+        <label for="nick">Ник пользователя:</label><br>
+        <input type="text" name="nick" id="nick" class="form-control" value="{{user.nick}}" placeholder="Ник пользователя"><br>
+        <label for="tg">Телеграмм:</label><br>
+        <input type="text" name="tg" id="tg" class="form-control" value="{{user.tg}}" placeholder="Телеграмм"><br>
+        <label for="email">Эл. адрес:</label><br>
+        <input type="email" name="email" id="email" class="form-control" value="{{user.email}}" placeholder="Эл. адрес"><br>
+        <label for="phone">Телефон:</label><br>
+        <input type="text" name="phone" id="phone" class="form-control" value="{{user.phone}}" placeholder="Телефон"><br>
+        <label for="pw">Пароль:</label><br>
+        <input type="password" name="pw" id="pw" class="form-control" value="{{user.pw}}" placeholder="Пароль"><br>
+        <input type="submit" class="btn btn-success" value="Обновить"><br>
+    </form>
+</div>
+{% endblock %}

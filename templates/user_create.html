@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавление пользователя
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавление пользователя</h1>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Имя пользователя"><br>
+        <input type="text" name="nick" id="nick" class="form-control" placeholder="Ник пользователя"><br>
+        <input type="text" name="tg" id="tg" class="form-control" placeholder="Телеграмм"><br>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Эл. адрес"><br>
+        <input type="text" name="phone" id="phone" class="form-control" placeholder="Телефон"><br>
+        <input type="password" name="pw" id="pw" class="form-control" placeholder="Пароль"><br>
+        <input type="submit" class="btn btn-success" value="Сохранить"><br>
+    </form>
+</div>
+{% endblock %}

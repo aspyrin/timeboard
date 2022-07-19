@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Категории задач
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Категории задач</h1>
+    {% if task_categories|length > 0 %}
+        {% for task_category in task_categories %}
+        <div class="alert alert-info">
+            <h2>{{ task_category.title }}</h2>
+            <p>{{ task_category.desc }}</p>
+            <a href="/taskcategories/{{ task_category.id }}" class="btn btn-warning">Детальнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>В базе нет ни одной категории задачи</p>
+    {% endif %}
+</div>
+
+{% endblock %}

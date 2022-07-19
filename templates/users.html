@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Пользователи сайта
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Все пользователи сайта</h1>
+    {% if users|length > 0 %}
+        {% for user in users %}
+        <div class="alert alert-info">
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.nick }}</p>
+            <a href="/users/{{ user.id }}" class="btn btn-warning">Детальнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>В базе нет ни одного пользователя</p>
+    {% endif %}
+</div>
+
+{% endblock %}

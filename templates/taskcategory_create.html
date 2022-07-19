@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Новая категория
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавление новой категории</h1>
+    <form method="post">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Название категории" required><br>
+        <textarea name="desc" id="desc" class="form-control" placeholder="Описание"></textarea><br>
+         <input type="submit" class="btn btn-success" value="Сохранить"><br>
+    </form>
+</div>
+{% endblock %}

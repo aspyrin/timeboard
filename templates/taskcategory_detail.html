@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ task_category.title }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ task_category.title }}</h1>
+    <div class="alert alert-info">
+        <p>{{ task_category.desc }}</p>
+        <a href="/taskcategories/{{ task_category.id }}/delete" class="btn btn-danger">Удалить</a>
+        <a href="/taskcategories/{{ task_category.id }}/update" class="btn btn-success">Изменить</a>
+    </div>
+</div>
+{% endblock %}

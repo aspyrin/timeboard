@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ task.title }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ task.title }}</h1>
+    <div class="alert alert-info">
+        <p>Категория: {{ task.category.title }}</p>
+        <p>Описание: {{ task.text }}</p>
+        <p>Суперзадача: {{ task.parent_task_id }}</p>
+        <p>Пользователи: {{ task.target_user_id }}</p>
+        <p>Начало:
+        {% if task.start_date is not none %}
+            {{ task.start_date.strftime("%Y-%m-%d %H:%M") }}
+        {% else %}
+            None
+        {% endif %}
+        </p>
+        <p>Окончание:
+        {% if task.end_date is not none %}
+            {{ task.end_date.strftime("%Y-%m-%d %H:%M") }}
+        {% else %}
+            None
+        {% endif %}
+        </p>
+        <p>Напомнить:
+        {% if task.remind_date is not none %}
+            {{ task.remind_date.strftime("%Y-%m-%d %H:%M") }}
+        {% else %}
+            None
+        {% endif %}
+        </p>
+        <p>Создано: {{ task.created.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+        <p>Создатель: {{ task.creator.name }}</p>
+        <p>Изменено:
+        {% if task.changed is not none %}
+            {{ task.changed.strftime("%Y-%m-%d %H:%M:%S") }}
+        {% else %}
+            None
+        {% endif %}
+        </p>
+        <p>Изменил: {{ task.last_changer.name }}</p>
+        <a href="/tasks/{{ task.id }}/delete" class="btn btn-danger">Удалить</a>
+        <a href="/tasks/{{ task.id }}/update" class="btn btn-success">Изменить</a>
+    </div>
+</div>
+{% endblock %}
