@@ -1,2 +1,6 @@
 [flake8]
+
+ignore =
+   A003      # class attribute "id" is shadowing a python builtin
+
 max-line-length=120

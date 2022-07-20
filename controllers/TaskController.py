@@ -1,7 +1,6 @@
 from flask import render_template, redirect, request
 from models.Models import Task
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 from utils import str_to_date
 
 db = SQLAlchemy()
@@ -35,14 +34,10 @@ def create():
                     end_date=end_date,
                     remind_date=remind_date,
                     creator_id=creator_id,
-                    #changed=changed,
                     last_changer_id=last_changer_id)
-        try:
-            db.session.add(task)
-            db.session.commit()
-            return redirect('/tasks')
-        except:
-            return "При добавлении задачи произошла ошибка!"
+        db.session.add(task)
+        db.session.commit()
+        return redirect('/tasks')
     else:
         return render_template("task_create.html")
 
@@ -65,20 +60,15 @@ def update(task_id):
         task.end_date = str_to_date(request.form['end_date'])
         task.remind_date = str_to_date(request.form['remind_date'])
         task.last_changer_id = 1
-        try:
-            db.session.commit()
-            return redirect('/tasks')
-        except:
-            return "При редактировании данных произошла ошибка!"
+
+        db.session.commit()
+        return redirect('/tasks')
     else:
         return render_template("task_update.html", task=task)
 
 
 def delete(task_id):
     task = db.session.query(Task).get(task_id)
-    try:
-        db.session.delete(task)
-        db.session.commit()
-        return redirect('/tasks')
-    except:
-        return "При удалении произошла ошибка!"
+    db.session.delete(task)
+    db.session.commit()
+    return redirect('/tasks')

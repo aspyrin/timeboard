@@ -19,12 +19,9 @@ def create():
         phone = request.form['phone']
         pw = request.form['pw']
         user = User(name=name, nick=nick, tg=tg, email=email, phone=phone, pw=pw)
-        try:
-            db.session.add(user)
-            db.session.commit()
-            return redirect('/users')
-        except:
-            return "При добавлении пользователя произошла ошибка!"
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/users')
     else:
         return render_template("user_create.html")
 
@@ -44,20 +41,14 @@ def update(user_id):
         user.email = str(request.form['email'])
         user.phone = str(request.form['phone'])
         user.pw = str(request.form['pw'])
-        try:
-            db.session.commit()
-            return redirect('/users')
-        except:
-            return "При редактировании данных произошла ошибка!"
+        db.session.commit()
+        return redirect('/users')
     else:
         return render_template("user_update.html", user=user)
 
 
 def delete(user_id):
     user = db.session.query(User).get(user_id)
-    try:
-        db.session.delete(user)
-        db.session.commit()
-        return redirect('/users')
-    except:
-        return "При удалении произошла ошибка!"
+    db.session.delete(user)
+    db.session.commit()
+    return redirect('/users')

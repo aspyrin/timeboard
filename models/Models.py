@@ -79,7 +79,7 @@ class Task(db.Model):
     """
     __tablename__ = 'tasks'
     id = db.Column(db.Integer, primary_key=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('taskcategory.id'))  #one-to-one
+    category_id = db.Column(db.Integer, db.ForeignKey('taskcategory.id'))  # one-to-one
     category = db.relationship('TaskCategory', backref=db.backref('tasks_by_category', lazy=True))
     title = db.Column(db.String, nullable=False)
     text = db.Column(db.Text)
