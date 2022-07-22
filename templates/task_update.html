@@ -11,8 +11,16 @@
         <label for="title">Заголовок задачи:</label><br>
         <input type="text" name="title" id="title" class="form-control" value="{{task.title}}" placeholder="Заголовок задачи" required><br>
 
-        <label for="category_id">Категория:</label><br>
-        <input type="number" name="category_id" id="category_id" class="form-control" value="{{task.category_id}}" placeholder="Категория" required><br>
+        <label for="category_id">Категория:</label>
+        <select id="category_id" name="category_id" class="form-control">
+            {% for category in categories %}
+                {% if category.id == task.category_id %}
+                    <option selected value="{{ category.id }}">{{ category.title }}</option>
+                {% else %}
+                    <option value="{{ category.id }}">{{ category.title }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
 
         <label for="text">Описание:</label><br>
         <textarea name="text" id="text" class="form-control" placeholder="Описание">{{task.text}}</textarea><br>

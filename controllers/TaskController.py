@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request
-from models.Models import Task
+from models.Models import Task, TaskCategory
 from flask_sqlalchemy import SQLAlchemy
 from utils import str_to_date
 
@@ -50,6 +50,7 @@ def detail(task_id):
 
 def update(task_id):
     task = db.session.query(Task).get(task_id)
+    categories = TaskCategory.query.order_by(TaskCategory.title).all()
     if request.method == 'POST':
         task.category_id = int(request.form['category_id'])
         task.title = request.form['title']
@@ -64,7 +65,7 @@ def update(task_id):
         db.session.commit()
         return redirect('/tasks')
     else:
-        return render_template("task_update.html", task=task)
+        return render_template("task_update.html", task=task, categories=categories)
 
 
 def delete(task_id):
